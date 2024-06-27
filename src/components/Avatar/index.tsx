@@ -1,12 +1,5 @@
+import { AvatarProps, Size } from 'types/avatar'
 import { classNames } from 'utils'
-
-type Size = 'small' | 'medium' | 'large'
-
-type AvatarProps = {
-  size?: Size
-  src?: string
-  alt?: string
-}
 
 const sizes: Record<Size, string> = {
   small: 'w-10 h-10',
