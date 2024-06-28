@@ -37,7 +37,6 @@ export default function CodeElement() {
         )}
       >
         <HighlightComponent code={code} />
-
         <textarea
           className={classNames(
             'absolute top-0 left-4 w-full h-full text-md tracking-[0.1rem] bg-transparent caret-transparent p-4 text-transparent outline-none'

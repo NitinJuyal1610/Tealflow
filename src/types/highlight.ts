@@ -1,5 +1,6 @@
 interface HighlightProps {
   code: string
+  position?: number
 }
 
 interface RenderProps {

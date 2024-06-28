@@ -3,7 +3,10 @@ import { PrismTheme } from 'prism-react-renderer'
 import { HighlightProps, RenderProps } from 'types/highlight'
 import { classNames } from 'utils'
 
-export default function HighlightComponent({ code }: HighlightProps) {
+export default function HighlightComponent({
+  code,
+  position = -1
+}: HighlightProps) {
   return (
     <PrismHighlight
       theme={themes.shadesOfPurple as PrismTheme}
@@ -12,14 +15,36 @@ export default function HighlightComponent({ code }: HighlightProps) {
     >
       {({ style, tokens, getLineProps, getTokenProps }: RenderProps) => (
         <pre style={style}>
-          {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
-              <span className={classNames('text-gray-400 mr-2')}>{i + 1}</span>
-              {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
+          {tokens.map((line, i) => {
+            return (
+              //line no. and its content
+              <div key={i} {...getLineProps({ line, key: i })}>
+                {/* line no. */}
+                <span className={classNames('text-gray-400 mr-2')}>
+                  {i + 1}
+                </span>
+                {/* {console.log('line ', line)} */}
+                {/* token for each line */}
+                {line.map((token, key) => {
+                  // console.log('token ', token)
+                  return (
+                    <>
+                      <span key={key} {...getTokenProps({ token, key })}>
+                        {console.log(token.content)}
+                        {token.content}
+                      </span>
+                    </>
+                  )
+                })}
+                {/* blink the last line */}
+                {i === tokens.length - 1 && position === -1 ? (
+                  <span className="animate-blink border-l-2 border-white">
+                    &nbsp;
+                  </span>
+                ) : null}
+              </div>
+            )
+          })}
         </pre>
       )}
     </PrismHighlight>
