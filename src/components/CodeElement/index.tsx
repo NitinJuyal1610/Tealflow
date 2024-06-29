@@ -8,19 +8,20 @@ export default function CodeElement({ lang }: CodeEditorProps) {
   const [isFocused, setIsFocused] = useState(false)
 
   const editorStyle: React.CSSProperties = {
-    fontSize: '1rem',
+    fontSize: '0.8rem',
     fontFamily: 'monospace',
-    lineHeight: '1.5rem',
+    lineHeight: '1.4rem',
     letterSpacing: '0.05rem',
-    background: 'transparent'
+    background: 'transparent',
+    overflowWrap: 'break-word'
   }
 
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   const handleCodeChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCode(e.target.value)
+    const textarea = e.target
+    setCode(textarea.value)
   }
-
   const handleFocus = () => {
     setIsFocused(true)
   }
@@ -33,20 +34,37 @@ export default function CodeElement({ lang }: CodeEditorProps) {
     if (e.key === 'Tab') {
       // tab
       e.preventDefault()
-      setCode(code + '  ')
+      if (textareaRef.current) {
+        //get position of cursor
+        const cursorPosition = textareaRef.current.selectionStart
+        const value = textareaRef.current.value
+        const newCode =
+          value.slice(0, cursorPosition) + '  ' + value.slice(cursorPosition)
+
+        //change cursor position
+        setCode(newCode)
+
+        // move cursor to the correct position
+        setTimeout(() => {
+          if (textareaRef.current) {
+            textareaRef.current.selectionStart = cursorPosition + 2
+            textareaRef.current.selectionEnd = cursorPosition + 2
+          }
+        }, 0)
+      }
     }
   }
 
   return (
     <div
       className={classNames(
-        'flex items-center justify-center rounded-xl border-2 border-gray-700 bg-gray-800',
+        'flex items-center justify-center rounded-xl border-2 border-gray-700 bg-gray-800 pr-4',
         isFocused ? 'border-2 border-indigo-500' : ''
       )}
     >
       <div
         className={classNames(
-          'relative size-full min-h-[600px] min-w-[600px] p-4 text-base text-white shadow-2xl'
+          'relative size-full w-[600px] min-h-[4rem] p-4 text-base text-white rounded-xl drop-shadow-xl shadow-2xl'
         )}
       >
         <HighlightComponent
@@ -56,7 +74,7 @@ export default function CodeElement({ lang }: CodeEditorProps) {
         />
         <textarea
           className={classNames(
-            'absolute top-0 left-[1.6rem] w-full h-full text-md tracking-[0.1rem] bg-transparent caret-white p-4 text-transparent  outline-none'
+            'absolute top-0 left-0 w-full overflow-hidden h-full text-md tracking-[0.1rem] bg-transparent  caret-white p-4 text-transparent  outline-none'
           )}
           style={editorStyle}
           ref={textareaRef}

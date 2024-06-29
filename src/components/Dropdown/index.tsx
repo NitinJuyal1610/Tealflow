@@ -43,12 +43,12 @@ const Dropdown: React.FC<DropdownProps> = ({
       </div>
 
       {isOpen && (
-        <div className="absolute left-1 right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg focus:outline-none">
+        <div className="absolute left-1 right-0 z-10 mt-2 w-56 origin-top-right rounded-lg bg-white shadow-xl ring-1 ring-gray-200 focus:outline-none">
           <div className="py-1">
             {options.map((option, index) => (
               <button
                 key={index}
-                className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                className=" block w-full border-gray-200 px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 "
                 onClick={() => handleOptionSelect(option)}
               >
                 {option}
