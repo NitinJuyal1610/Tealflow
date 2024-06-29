@@ -1,6 +1,6 @@
 interface HighlightProps {
   code: string
-  position?: number
+  customStyle?: React.CSSProperties
 }
 
 interface RenderProps {
