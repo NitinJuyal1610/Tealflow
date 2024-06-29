@@ -1,8 +1,28 @@
 import Avatar from 'components/Avatar'
 import logo from 'assets/logo.svg'
 import CodeElement from './CodeElement'
+import Dropdown from './Dropdown'
+import { Languages } from 'types/editor'
+import { useState } from 'react'
 
 function App() {
+  const [lang, setLang] = useState<Languages>('jsx')
+  const languageOptions: Languages[] = [
+    'markup',
+    'jsx',
+    'tsx',
+    'swift',
+    'kotlin',
+    'objectivec',
+    'js-extras',
+    'reason',
+    'rust',
+    'graphql',
+    'yaml',
+    'go',
+    'cpp',
+    'markdown'
+  ]
   return (
     <div className="relative overflow-hidden bg-white">
       <div className="h-screen sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
@@ -16,13 +36,17 @@ function App() {
               Tealflow!
             </h1>
             <p className="mt-4 text-xl leading-tight text-gray-500">
-              Code editor for Teal
+              <Dropdown
+                options={languageOptions}
+                onSelect={setLang}
+                selectedOption={lang}
+              />
             </p>
           </div>
           <div className="my-10">
             <div aria-hidden="true">
               <div className="absolute sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                <CodeElement />
+                <CodeElement lang={lang} />
               </div>
             </div>
           </div>

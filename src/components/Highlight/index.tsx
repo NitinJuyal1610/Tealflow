@@ -5,13 +5,14 @@ import { classNames } from 'utils'
 
 export default function HighlightComponent({
   code,
-  customStyle
+  customStyle,
+  language
 }: HighlightProps) {
   return (
     <PrismHighlight
       theme={themes.shadesOfPurple as PrismTheme}
       code={code}
-      language="cpp"
+      language={language}
     >
       {({ style, tokens, getLineProps, getTokenProps }: RenderProps) => (
         <pre style={{ ...style, ...customStyle }}>
@@ -24,7 +25,9 @@ export default function HighlightComponent({
                 className={classNames('editor')}
               >
                 {/* line no. */}
-                <span className={classNames('text-gray-400 mr-2')}>
+                <span
+                  className={classNames('text-[rgba(114,113,113,0.76)] mr-4')}
+                >
                   {i + 1}
                 </span>
                 {line.map((token, key) => {
@@ -37,12 +40,6 @@ export default function HighlightComponent({
                     </>
                   )
                 })}
-                {/* blink the last line
-                {i === tokens.length - 1 && position === -1 ? (
-                  <span className="animate-blink border-l-2 border-white">
-                    &nbsp;
-                  </span>
-                ) : null} */}
               </div>
             )
           })}

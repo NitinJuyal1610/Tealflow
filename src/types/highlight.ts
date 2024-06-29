@@ -1,6 +1,9 @@
+import { Languages } from './editor'
+
 interface HighlightProps {
   code: string
   customStyle?: React.CSSProperties
+  language: Languages
 }
 
 interface RenderProps {
