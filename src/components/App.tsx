@@ -56,7 +56,7 @@ function App() {
 
           <div className="flex justify-center">
             <a
-              href="https://github.com"
+              href="https://github.com/NitinJuyal1610/Tealflow"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg bg-gray-800 p-2 font-bold text-white"

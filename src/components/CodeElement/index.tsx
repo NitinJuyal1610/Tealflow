@@ -64,7 +64,7 @@ export default function CodeElement({ lang }: CodeEditorProps) {
     >
       <div
         className={classNames(
-          'relative size-full w-[600px] min-h-[3.5rem] p-4 text-base text-white rounded-xl drop-shadow-xl shadow-2xl'
+          'relative size-full w-[350px]  sm:w-[600px]  min-h-[3.5rem] p-4 text-base text-white rounded-xl drop-shadow-xl shadow-2xl'
         )}
       >
         <HighlightComponent
