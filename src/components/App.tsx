@@ -34,13 +34,17 @@ function App() {
             <h1 className="text-center text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
               Tealflow!
             </h1>
-            <p className="mt-4 text-center text-xl leading-tight text-gray-500">
+
+            <p className="mt-2 text-center text-lg leading-tight text-gray-700">
+              Code smarter, not harder!
+            </p>
+            <div className="mt-4 text-center text-xl leading-tight text-gray-500">
               <Dropdown
                 options={languageOptions}
                 onSelect={setLang}
                 selectedOption={lang}
               />
-            </p>
+            </div>
           </div>
           <div className="my-10 flex w-full justify-center rounded-xl ">
             <div aria-hidden="true" className="flex w-full justify-center ">
@@ -48,6 +52,17 @@ function App() {
                 <CodeElement lang={lang} />
               </div>
             </div>
+          </div>
+
+          <div className="flex justify-center">
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-lg bg-gray-800 p-2 font-bold text-white"
+            >
+              GitHub
+            </a>
           </div>
         </div>
       </div>

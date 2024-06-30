@@ -8,7 +8,7 @@ export default function CodeElement({ lang }: CodeEditorProps) {
   const [isFocused, setIsFocused] = useState(false)
 
   const editorStyle: React.CSSProperties = {
-    fontSize: '1rem',
+    fontSize: '0.8rem',
     fontFamily: 'monospace',
     lineHeight: '1.4rem',
     letterSpacing: '0.05rem',
