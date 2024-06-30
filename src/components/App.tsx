@@ -4,6 +4,7 @@ import CodeElement from './CodeElement'
 import Dropdown from './Dropdown'
 import { Languages } from 'types/editor'
 import { useState } from 'react'
+import '../../index.css'
 
 function App() {
   const [lang, setLang] = useState<Languages>('jsx')
