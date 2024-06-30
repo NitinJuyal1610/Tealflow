@@ -4,7 +4,17 @@ import HighlightComponent from 'components/Highlight'
 import { CodeEditorProps } from 'types/editor'
 
 export default function CodeElement({ lang }: CodeEditorProps) {
-  const [code, setCode] = useState('')
+  const [code, setCode] = useState(`import React from 'react';
+  export function App(props) {
+    return (
+      <div className='App'>
+        <h1>Hello React.</h1>
+        <h2>Start editing to see some magic happen!</h2>
+      </div>
+    );
+  }
+  // Log to console
+  console.log('Hello console')`)
   const [isFocused, setIsFocused] = useState(false)
 
   const editorStyle: React.CSSProperties = {
