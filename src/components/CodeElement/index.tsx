@@ -8,7 +8,7 @@ export default function CodeElement({ lang }: CodeEditorProps) {
   const [isFocused, setIsFocused] = useState(false)
 
   const editorStyle: React.CSSProperties = {
-    fontSize: '0.8rem',
+    fontSize: '1rem',
     fontFamily: 'monospace',
     lineHeight: '1.4rem',
     letterSpacing: '0.05rem',
@@ -64,7 +64,7 @@ export default function CodeElement({ lang }: CodeEditorProps) {
     >
       <div
         className={classNames(
-          'relative size-full w-[600px] min-h-[4rem] p-4 text-base text-white rounded-xl drop-shadow-xl shadow-2xl'
+          'relative size-full w-[600px] min-h-[3.5rem] p-4 text-base text-white rounded-xl drop-shadow-xl shadow-2xl'
         )}
       >
         <HighlightComponent
@@ -74,11 +74,13 @@ export default function CodeElement({ lang }: CodeEditorProps) {
         />
         <textarea
           className={classNames(
-            'absolute top-0 left-0 w-full overflow-hidden h-full text-md tracking-[0.1rem] bg-transparent  caret-white p-4 text-transparent  outline-none'
+            'absolute top-0 left-0 w-full overflow-hidden h-full text-md tracking-[0.1rem] bg-transparent  caret-white p-4 resize-none outline-none',
+            code ? 'text-transparent' : 'text-white'
           )}
           style={editorStyle}
           ref={textareaRef}
           value={code}
+          placeholder="Type your code here..."
           onFocus={handleFocus}
           onBlur={handleBlur}
           onChange={handleCodeChange}

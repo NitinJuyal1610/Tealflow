@@ -25,12 +25,13 @@ export default function HighlightComponent({
               //line no. and its content
               <div key={i} {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => {
-                  if (token.empty) return null
+                  if (token.empty && i === 0) return null
                   return (
+                    //line no. and its content
                     <span
                       key={key}
                       {...getTokenProps({ token, key })}
-                      className="whitespace-pre-wrap"
+                      className="whitespace-pre-wrap "
                     >
                       {token.content}
                     </span>
